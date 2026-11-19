@@ -122,7 +122,9 @@ pip install -r requirements.txt
 
 - Install and start MySQL Server.
 - Create the project database.
-- Configure your MySQL credentials in the database connection file.
+- Create a `.env` file in the project root directory.
+- Add your MySQL credentials to the `.env` file.
+- The `.env` file is excluded from Git using `.gitignore` to protect sensitive credentials.
 
 ### 4. Run the Project
 
