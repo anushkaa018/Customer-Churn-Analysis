@@ -1,66 +1,94 @@
-
-
-# Customer Churn & Retention Analysis
+Customer Churn & Retention Analysis
 
 A data analytics project focused on understanding customer churn, identifying high-risk customer segments, and exploring strategies to improve customer retention.
 
-## Project Overview
+Project Overview
 
 This project analyzes customer churn data to identify patterns behind customer cancellations and understand which customer segments are more likely to churn.
 
-The project follows an end-to-end data analytics workflow using Python, MySQL, and Power BI, covering data exploration, cleaning, SQL analysis, visualization, dashboard development, and data pipeline automation.
+The project follows a data analytics workflow using Python, MySQL, and Power BI, covering data exploration, cleaning, SQL analysis, visualization, dashboard development, and data validation.
 
-## Business Objectives
+Business Objectives
 
-- Identify key factors contributing to customer churn.
-- Analyze churn across different customer segments.
-- Identify high-risk customer groups.
-- Understand the relationship between tenure, contract type, and monthly charges with churn.
-- Provide data-driven insights to support customer retention strategies.
+Identify key factors contributing to customer churn.
 
-## Tools & Technologies
+Analyze churn across different customer segments.
 
-- **Python** – Data analysis and automation
-- **Pandas** – Data manipulation and analysis
-- **Matplotlib** – Data visualization
-- **MySQL** – Database storage and SQL analysis
-- **Power BI** – Interactive dashboard development
-- **Git & GitHub** – Version control and project management
+Identify high-risk customer groups.
 
-## Project Workflow
+Understand the relationship between tenure, contract type, and monthly charges with churn.
 
-1. Dataset Understanding
-2. Data Exploration using Python & Pandas
-3. Data Cleaning
-4. SQL Analysis using MySQL
-5. Customer Analysis & Visualization using Matplotlib
-6. Interactive Power BI Dashboard connected to MySQL
-7. Data Pipeline Automation & Validation
+Provide data-driven insights to support customer retention strategies.
 
-## Key Insights
+Tools & Technologies
 
-- Overall customer churn rate was approximately **26.54%**.
-- Month-to-month customers had the highest churn rate of **42.71%**.
-- Customers with two-year contracts had a significantly lower churn rate of **2.83%**.
-- Customers with shorter tenure were more likely to churn.
-- Higher monthly charges were associated with higher churn.
-- Customers with month-to-month contracts and high monthly charges formed a high-risk segment, with a churn rate of **52.33%**.
+Python – Data analysis and automation
 
-## Data Pipeline Automation
+Pandas – Data manipulation and analysis
 
-The project includes an automated data pipeline built using Python to validate data and load it into MySQL.
+Matplotlib – Data visualization
 
-### Key Features
+MySQL – Database storage and SQL analysis
 
-- **48 automated validation checks**
-- Validation of data types, missing values, duplicate records, categorical values, and numerical ranges
-- Automated data loading into MySQL
-- Handling of new records
-- Updating existing records without creating duplicates
-- Prevention of invalid data from entering the database
-- Logging of validation results and pipeline activity
+Power BI – Interactive dashboard development
 
-The pipeline was tested using valid and invalid datasets to verify data validation, insertion, updating, and rejection behavior.
+Git & GitHub – Version control and project management
+
+Project Workflow
+
+Dataset Understanding
+
+Data Exploration using Python & Pandas
+
+Data Cleaning
+
+SQL Analysis using MySQL
+
+Customer Analysis & Visualization using Matplotlib
+
+Interactive Power BI Dashboard connected to MySQL
+
+Data Validation & Database Loading
+
+Key Insights
+
+Overall customer churn rate was approximately 26.54%.
+
+Month-to-month customers had the highest churn rate of 42.71%.
+
+Customers with two-year contracts had a significantly lower churn rate of 2.83%.
+
+Customers with shorter tenure were more likely to churn.
+
+Higher monthly charges were associated with higher churn.
+
+Customers with month-to-month contracts and high monthly charges formed a high-risk segment, with a churn rate of 52.33%.
+
+Data Validation & Database Loading
+
+Python scripts were developed for data validation and database loading.
+
+Implemented Components
+
+48 automated validation checks
+
+Validation of data types, missing values, duplicate records, categorical values, and numerical ranges
+
+MySQL database connection using environment variables
+
+Data loading functionality for MySQL
+
+Handling of new records
+
+Updating existing records without creating duplicates
+
+Validation of datasets before loading through the Python workflow
+
+Logging of validation results and loading activities
+
+The validation and database loading components were tested using valid and invalid datasets to verify insertion, updating, and rejection behavior.
+
+A complete end-to-end automated pipeline connecting the entire workflow is currently under development.
 
 ## Dashboard & Database Integration
 
