@@ -17,3 +17,15 @@ venv/
 
 # IDE
 .vscode/
+
+# Local datasets
+data/processed/
+data/incoming/
+
+# Personal notes
+pro_notes.txt
+project_overview.txt
+
+# Credentials and logs
+.env
+validation.log

@@ -1,33 +1,13 @@
--- 1. DATABASE SETUP
--- Create a separate database for our churn analysis project
-CREATE DATABASE customer_churn_analysis;
--- Select the project database
-USE customer_churn_analysis;
--- 2. TABLE CREATION
-CREATE TABLE customers (
-    customerID VARCHAR(20) PRIMARY KEY,
-    gender VARCHAR(10),
-    SeniorCitizen TINYINT,
-    Partner VARCHAR(5),
-    Dependents VARCHAR(5),
-    tenure INT,
-    PhoneService VARCHAR(5),
-    MultipleLines VARCHAR(25),
-    InternetService VARCHAR(20),
-    OnlineSecurity VARCHAR(25),
-    OnlineBackup VARCHAR(25),
-    DeviceProtection VARCHAR(25),
-    TechSupport VARCHAR(25),
-    StreamingTV VARCHAR(25),
-    StreamingMovies VARCHAR(25),
-    Contract VARCHAR(25),
-    PaperlessBilling VARCHAR(5),
-    PaymentMethod VARCHAR(50),
-    MonthlyCharges DECIMAL(10,2),
-    TotalCharges DECIMAL(10,2),
-    Churn VARCHAR(5)
-);
--- 3. DATA IMPORT & VALIDATION
+CREATE DATABASE churn_test_db;
+SHOW DATABASES;
+use churn_test_db;
+show tables;
+select * from customers;
+
+SELECT COUNT(*) AS missing_total_charges
+FROM customers
+WHERE TotalCharges IS NULL;
+
 -- 1. Count imported customer records
 SELECT COUNT(*) AS total_customers
 FROM customers;
@@ -395,3 +375,44 @@ SELECT
 FROM customers
 WHERE Contract = 'Month-to-month'
 AND MonthlyCharges > 85;
+
+
+USE churn_test_db;
+
+-- Churn analysis by contract and tenure group
+WITH customer_segments AS (
+    SELECT
+        customerID,
+        Contract,
+        Churn,
+        CASE
+            WHEN tenure <= 12 THEN '0-12 months'
+            WHEN tenure <= 24 THEN '13-24 months'
+            WHEN tenure <= 48 THEN '25-48 months'
+            ELSE '49-72 months'
+        END AS tenure_group
+    FROM customers
+)
+
+SELECT
+    Contract,
+    tenure_group,
+    COUNT(*) AS total_customers,
+
+    SUM(
+        CASE WHEN Churn = 'Yes'
+        THEN 1 ELSE 0 END
+    ) AS churned_customers,
+
+    ROUND(
+        SUM(
+            CASE WHEN Churn = 'Yes'
+            THEN 1 ELSE 0 END
+        ) * 100.0 / COUNT(*),
+        2
+    ) AS churn_rate
+
+FROM customer_segments
+
+GROUP BY Contract, tenure_group
+ORDER BY Contract, tenure_group;

@@ -63,3 +63,25 @@ WHERE customerID = '7590-VHVEG';
 
 DELETE FROM customers
 WHERE customerID = '9001-ABCDE';
+
+SHOW CREATE TABLE customers;
+
+START TRANSACTION;
+
+INSERT INTO customers (customerID, gender, tenure, Churn)
+VALUES ('TEST001', 'Invalid', -5, 'Maybe');
+
+SELECT * FROM customers
+WHERE customerID = 'TEST001';
+ROLLBACK;
+
+USE churn_test_db;
+
+SELECT *
+FROM customers
+WHERE customerID = 'PIPELINE-TEST-001';
+
+USE churn_test_db;
+
+DELETE FROM customers
+WHERE customerID = 'PIPELINE-TEST-001';
